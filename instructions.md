@@ -119,7 +119,9 @@ export const Card: React.FC<CardProps> = ({ title, children }) => {
 
 **`components/Card.stories.tsx`**
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react';
+// Only call project specific storybook package calling whole storybook may work but bundle size will increase.
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'; //Next.js
+import type { Meta, StoryObj } from '@storybook/react-vite'; //React.js 
 import { Card } from './Card';
 
 const meta = {
