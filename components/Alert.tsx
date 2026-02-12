@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Alert.scss';
 
 export interface AlertProps {
@@ -34,6 +34,17 @@ export const Alert: React.FC<AlertProps> = ({
   closable = false,
   onClose,
 }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
+  const handleClose = () => {
+    setIsVisible(false);
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div className={`alert alert--${variant}`} role="alert">
       <div className="alert__content">
@@ -41,7 +52,7 @@ export const Alert: React.FC<AlertProps> = ({
         <div className="alert__message">{message}</div>
       </div>
       {closable && (
-        <button className="alert__close" onClick={onClose} aria-label="Close">
+        <button className="alert__close" onClick={handleClose} aria-label="Close">
           ×
         </button>
       )}

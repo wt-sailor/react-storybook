@@ -50,7 +50,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <div className="popover-wrapper" ref={popoverRef}>
-      <div onClick={() => setIsOpen(!isOpen)}>
+      <div className="popover-trigger" onClick={() => setIsOpen(!isOpen)}>
         {children}
       </div>
       {isOpen && (

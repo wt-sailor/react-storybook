@@ -1,6 +1,10 @@
 'use client';
 
-import { Button, Alert, Tooltip, Popover } from '@/components';
+import { 
+  Button, Alert, Tooltip, Popover, 
+  Typography, Input, Checkbox, Radio, Select, Textarea,
+  Breadcrumbs, Tabs 
+} from '@/components';
 
 export default function Home() {
   return (
@@ -15,6 +19,90 @@ export default function Home() {
             Built with Next.js, TypeScript, TailwindCSS & SCSS
           </p>
         </div>
+
+        {/* Typography Section */}
+        <section className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Typography</h2>
+          <div className="space-y-4">
+            <Typography variant="h1">Heading 1</Typography>
+            <Typography variant="h2">Heading 2</Typography>
+            <Typography variant="h3">Heading 3</Typography>
+            <Typography variant="body1">
+              Body 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Typography>
+            <Typography variant="caption" color="text-secondary">
+              Caption text goes here
+            </Typography>
+          </div>
+        </section>
+
+        {/* Navigation Section */}
+        <section className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Navigation</h2>
+          
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Breadcrumbs</h3>
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Components', href: '#' },
+                { label: 'Navigation', isActive: true }
+              ]} 
+            />
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Tabs</h3>
+            <Tabs 
+              items={[
+                { id: 'tab1', label: 'Overview', content: <div className="p-4 bg-gray-50 rounded">Content for Overview tab</div> },
+                { id: 'tab2', label: 'Details', content: <div className="p-4 bg-gray-50 rounded">Content for Details tab</div> },
+                { id: 'tab3', label: 'Settings', content: <div className="p-4 bg-gray-50 rounded">Content for Settings tab</div> }
+              ]} 
+            />
+          </div>
+        </section>
+
+        {/* Form Controls Section */}
+        <section className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Form Controls</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <Input label="Username" placeholder="Enter username" />
+              <Input label="Email" placeholder="Enter email" error helperText="Invalid email address" />
+              <Input label="Search" placeholder="Search..." startIcon={<span>🔍</span>} />
+            </div>
+            
+            <div className="space-y-4">
+              <Select 
+                label="Role" 
+                options={[
+                  { value: '', label: 'Select a role' },
+                  { value: 'admin', label: 'Administrator' },
+                  { value: 'user', label: 'User' },
+                  { value: 'guest', label: 'Guest' }
+                ]} 
+              />
+              <Textarea label="Bio" placeholder="Tell us about yourself" rows={3} />
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex flex-col gap-2">
+                <Checkbox label="Subscribe to newsletter" />
+                <Checkbox label="I agree to terms" defaultChecked />
+                <Checkbox label="Disabled option" disabled />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex flex-col gap-2">
+                <Radio label="Option A" name="radio-group" value="a" />
+                <Radio label="Option B" name="radio-group" value="b" defaultChecked />
+                <Radio label="Disabled" name="radio-group" value="c" disabled />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Buttons Section */}
         <section className="bg-white rounded-2xl shadow-lg p-8 mb-8">
